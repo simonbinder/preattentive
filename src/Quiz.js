@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FormRadio, Button } from "shards-react";
 import Question from "./Question";
 
-const types = ["color", "shape", "both", "number", "multiple"];
+const types = ["color", "shape", "both", "number", "multiple", "multiplecolor"];
 
 function Quiz() {
   const [selectedType, setSelectedType] = useState("");

@@ -277,6 +277,97 @@ function Question(questionProps) {
                 </Stage>
               </div>
             )}
+            {selectedType === "multiplecolor" && (
+              <div>
+                <Stage width={window.innerWidth} height={window.innerHeight}>
+                  <Layer>
+                    {circles.map((circle, i) => {
+                      if (i === 0 && displayElement) {
+                        return (
+                          <Circle
+                            key={i}
+                            x={circle.x}
+                            y={circle.y}
+                            radius={circle.r}
+                            fill={"red"}
+                          />
+                        );
+                      } else {
+                        const random_boolean = Math.random();
+                        if (random_boolean <= 0.2) {
+                          const rand = Math.random() * (10 - 1) + 1;
+                          return (
+                            <Rect
+                              key={i}
+                              x={circle.x}
+                              y={circle.y}
+                              width={circle.r * rand}
+                              height={circle.r * rand}
+                              rotation={360 * rand}
+                              fill={"grey"}
+                            />
+                          );
+                        } else if (
+                          random_boolean > 0.2 &&
+                          random_boolean <= 0.4
+                        ) {
+                          return (
+                            <Ellipse
+                              key={i}
+                              x={circle.x}
+                              y={circle.y}
+                              radiusX={circle.r}
+                              radiusY={circle.r * 2}
+                              fill={"red"}
+                            />
+                          );
+                        } else if (
+                          random_boolean > 0.4 &&
+                          random_boolean <= 0.6
+                        ) {
+                          return (
+                            <Circle
+                              key={i}
+                              x={circle.x}
+                              y={circle.y}
+                              radius={circle.r}
+                              fill={"grey"}
+                            />
+                          );
+                        } else if (
+                          random_boolean > 0.6 &&
+                          random_boolean <= 0.8
+                        ) {
+                          return (
+                            <Arc
+                              x={circle.x}
+                              y={circle.y}
+                              innerRadius={40}
+                              outerRadius={70}
+                              angle={60}
+                              fill={"grey"}
+                              stroke={"grey"}
+                              strokeWidth={2}
+                            />
+                          );
+                        } else {
+                          const rand = Math.random() * (5 - 1) + 1;
+                          return (
+                            <Circle
+                              key={i}
+                              x={circle.x}
+                              y={circle.y}
+                              radius={circle.r * rand}
+                              fill={"grey"}
+                            />
+                          );
+                        }
+                      }
+                    })}
+                  </Layer>
+                </Stage>
+              </div>
+            )}
           </div>
         ) : (
           <div>
